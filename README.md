@@ -60,7 +60,8 @@ npm test
 
 Имя нового отдельного проекта: `sprayform-portfolio`. `Dockerfile` и `railway.json` готовы. Runtime-образ содержит только Node, сервер и статическую сборку. Railway получает `PORT` автоматически. Никакие существующие проекты не менялись.
 
-На момент этой версии удалённый репозиторий и Railway deployment не созданы. Аккаунты GitHub и Railway проверены, но доступный GitHub connector не предоставляет операцию создания репозитория, а авторизованного `gh` CLI в среде нет. Для последнего шага требуется разрешённый переход в браузер GitHub либо новый пустой репозиторий от владельца. После этого: загрузить проект, создать отдельный Railway project, подключить main, дождаться healthcheck и получить домен Railway.
+Опубликовано 3 октября 2026: https://sprayform-portfolio-production.up.railway.app/
+Репозиторий, созданный владельцем: https://github.com/aodess/Test. Отдельный проект Railway: sprayform-portfolio. Production deployment успешно прошёл сборку и healthcheck; публичная страница и диалоги проверены в браузере.
 
 ## Решения
 
