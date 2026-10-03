@@ -1,0 +1,8 @@
+---
+import { projects } from '../../config/content';
+import Mark from '../../components/Mark.astro';
+import '../../styles/global.css';
+export function getStaticPaths(){return projects.map(project=>({params:{id:project.id},props:{project}}));}
+const {project}=Astro.props;
+---
+<!doctype html><html lang="ru"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>{project.name} — концепт / SPRAYFORM</title><meta name="description" content={project.phrase}/><link rel="icon" href="/favicon.svg" type="image/svg+xml"/></head><body><header class="site-header wrap"><a href="/" class="brand"><Mark/><span>SPRAYFORM</span></a><a class="case-back" href="/#work">Все работы</a></header><main class="wrap case-main"><p class="eyebrow">АВТОРСКИЙ КОНЦЕПТ / {project.category}</p><h1>{project.name}</h1><p class="dialog-phrase">{project.phrase}</p><img class="dialog-cover" src={`/assets/${project.id}-960.webp`} width="960" height="720" alt={project.alt}/><div class="dialog-columns"><div><h2>Задача</h2><p>{project.task}</p></div><div><h2>Решение</h2><p>{project.solution}</p></div></div><p class="scope">{project.scope}</p><p class="concept-note">Самостоятельное исследование. Не клиентский заказ. Обложка — художественный 3D-этюд, а не скриншот готового продукта.</p><a class="button button-lime" href="/#contact" style="margin-top:32px">Обсудить проект</a></main></body></html>

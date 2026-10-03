@@ -1,0 +1,12 @@
+import {chromium} from 'playwright';
+import {mkdir} from 'node:fs/promises';
+const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH||'/root/.cache/ms-playwright/chromium_headless_shell-1194/chrome-linux/headless_shell',args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});
+const errors=[];page.on('pageerror',e=>errors.push(String(e)));page.on('console',e=>{if(e.type()==='error')errors.push(e.text())});
+await page.goto('http://127.0.0.1:4321/',{waitUntil:'networkidle'});
+await page.waitForTimeout(1600);
+await mkdir('test-results',{recursive:true});
+await page.screenshot({path:'test-results/desktop.png',fullPage:true});
+console.log(JSON.stringify({errors,ready:await page.locator('.scene-host').getAttribute('data-ready'),canvas:await page.locator('canvas').count(),title:await page.title(),overflow:await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)}));
+await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-results/mobile.png',fullPage:true});
+await browser.close();

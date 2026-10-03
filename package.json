@@ -1,0 +1,42 @@
+{
+  "name": "sprayform-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro check && astro build && node scripts/compress.mjs",
+    "start": "node server.mjs",
+    "test": "playwright test",
+    "assets": "node scripts/prepare-assets.mjs && node scripts/copy-fonts.mjs",
+    "licenses": "node scripts/licenses.mjs"
+  },
+  "dependencies": {
+    "@astrojs/react": "7.0.0",
+    "@fontsource-variable/golos-text": "5.3.0",
+    "@fontsource-variable/space-grotesk": "5.3.0",
+    "@gsap/react": "2.1.2",
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.1",
+    "astro": "7.3.5",
+    "gsap": "3.15.0",
+    "oxc-transform-react": "0.145.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "@types/node": "24.19.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.186.0",
+    "sharp": "0.35.5",
+    "typescript": "6.0.3"
+  }
+}

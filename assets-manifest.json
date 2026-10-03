@@ -1,0 +1,102 @@
+{
+  "note": "Seven supplied SPRAYFORM assets inspected. 01 is reference/fallback only; the interactive hero uses real procedural geometry. No baked depth inferred from albedo.",
+  "assets": [
+    {
+      "id": "01",
+      "source": "01_art_direction.png",
+      "format": "png",
+      "width": 1672,
+      "height": 941,
+      "hasAlpha": false,
+      "outputs": [
+        "hero-640.avif",
+        "hero-640.webp",
+        "hero-1200.avif",
+        "hero-1200.webp"
+      ],
+      "usage": "Composition reference and static fallback only. Right crop at natural proportions."
+    },
+    {
+      "id": "02",
+      "source": "02_brick_albedo.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "outputs": [
+        "brick.webp"
+      ],
+      "usage": "Non-repeating albedo, clamped separately on each wall. Original is not guaranteed seamless. No normal or depth inferred."
+    },
+    {
+      "id": "03",
+      "source": "03_spray_decal.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "outputs": [
+        "spray.webp"
+      ],
+      "usage": "True-alpha wall decal; custom GLSL reveal. Geometry supplies all depth."
+    },
+    {
+      "id": "04",
+      "source": "04_project_pulse.png",
+      "format": "png",
+      "width": 1448,
+      "height": 1086,
+      "hasAlpha": false,
+      "outputs": [
+        "pulse-480.avif",
+        "pulse-480.webp",
+        "pulse-960.avif",
+        "pulse-960.webp"
+      ],
+      "usage": "Art cover for a clearly labeled concept, never presented as an actual product screenshot."
+    },
+    {
+      "id": "05",
+      "source": "05_project_form.png",
+      "format": "png",
+      "width": 1448,
+      "height": 1086,
+      "hasAlpha": false,
+      "outputs": [
+        "form-480.avif",
+        "form-480.webp",
+        "form-960.avif",
+        "form-960.webp"
+      ],
+      "usage": "Art cover for a clearly labeled concept, never presented as an actual product screenshot."
+    },
+    {
+      "id": "06",
+      "source": "06_project_orbit.png",
+      "format": "png",
+      "width": 1448,
+      "height": 1086,
+      "hasAlpha": false,
+      "outputs": [
+        "orbit-480.avif",
+        "orbit-480.webp",
+        "orbit-960.avif",
+        "orbit-960.webp"
+      ],
+      "usage": "Art cover for a clearly labeled concept, never presented as an actual product screenshot."
+    },
+    {
+      "id": "07",
+      "source": "07_logo_sf.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "outputs": [
+        "/mark.svg",
+        "/favicon.svg"
+      ],
+      "usage": "Direction for an independently redrawn clean monochrome SVG. Raster has visible alpha artifacts; not shipped."
+    }
+  ]
+}

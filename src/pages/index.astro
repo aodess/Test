@@ -1,0 +1,91 @@
+---
+import { brand, projects, services } from '../config/content';
+import Mark from '../components/Mark.astro';
+import Scene from '../components/Scene';
+import '../styles/global.css';
+const contactHref = brand.contact.email ? `mailto:${brand.contact.email}` : brand.contact.telegram || '';
+---
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SPRAYFORM — сайты с характером</title>
+    <meta name="description" content={brand.description} />
+    <meta name="theme-color" content="#181A1B" />
+    <meta property="og:title" content="SPRAYFORM — сайты с характером" />
+    <meta property="og:description" content={brand.description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/golos-text-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/golos-text-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">К содержанию</a>
+    <header class="site-header wrap">
+      <a class="brand" href="#top" aria-label="SPRAYFORM — в начало"><Mark /><span>SPRAYFORM</span></a>
+      <nav aria-label="Основная навигация"><a href="#work">Работы</a><a href="#approach">Подход</a><a href="#contact">Контакт</a></nav>
+      <span class="header-note">Независимый<br />веб-дизайнер</span>
+    </header>
+
+    <main id="main">
+      <section class="hero wrap" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="tiny-line"></span> DIGITAL DESIGN WITH A HUMAN TOUCH</p>
+          <h1 id="hero-title"><span class="line-mask"><span>Сайты</span></span>{' '}<span class="line-mask"><span>с характером<span class="title-dot">.</span></span></span></h1>
+          <p class="hero-description">{brand.description}</p>
+          <div class="hero-actions"><a class="button button-lime" href="#work">Посмотреть работы</a><a class="text-button" href="#contact">Обсудить проект</a></div>
+        </div>
+        <div class="hero-art">
+          <picture class="scene-fallback">
+            <source type="image/avif" srcset="/assets/hero-640.avif 640w, /assets/hero-1200.avif 1200w" sizes="(max-width: 760px) 100vw, 58vw" />
+            <img src="/assets/hero-1200.webp" srcset="/assets/hero-640.webp 640w, /assets/hero-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 58vw" width="1200" height="1120" alt="Абстрактные аэрозольные ленты кораллового, лаймового и кобальтового цветов в кирпичной галерее" fetchpriority="high" />
+          </picture>
+          <Scene client:idle />
+          <div class="art-label"><span class="label-cross" aria-hidden="true">+</span><span>Форма свободна.<br />Смысл — точен.</span><span class="art-label-number">SF—001</span></div>
+          <div class="scene-caption"><span>SPRAY + FORM</span><span>Этюд в трёх цветах</span></div>
+        </div>
+        <div class="hero-bottom"><p>{brand.tagline}</p><span>Портфолио / 2026</span></div>
+      </section>
+
+      <section class="work-section wrap" id="work" aria-labelledby="work-title">
+        <div class="section-heading"><div><p class="eyebrow">01 / ИЗБРАННОЕ</p><h2 id="work-title">Разные идеи.<br /><span class="muted">Свой почерк.</span></h2></div><p class="section-note">Три авторских концепта.<br />Три способа быть заметным.</p></div>
+        <div class="project-grid">
+          {projects.map(project => <article class={`project project-${project.color}`}>
+            <a class="project-link" href={`/projects/${project.id}/`} data-project={project.id} aria-label={`${project.name} — концепт. Подробнее о проекте`}>
+              <div class="project-image">
+                <picture><source type="image/avif" srcset={`/assets/${project.id}-480.avif 480w, /assets/${project.id}-960.avif 960w`} sizes="(max-width: 760px) 92vw, 32vw" /><img src={`/assets/${project.id}-960.webp`} srcset={`/assets/${project.id}-480.webp 480w, /assets/${project.id}-960.webp 960w`} sizes="(max-width: 760px) 92vw, 32vw" width="960" height="720" loading="lazy" alt={project.alt} /></picture>
+                <span class="concept-badge">Концепт</span><span class="cover-word">{project.name}</span><span class="project-open">Смотреть проект</span>
+              </div>
+              <div class="project-title"><h3>{project.name}</h3><span>{project.number}</span></div>
+              <p class="project-category">{project.category}</p>
+              <p class="project-phrase">{project.phrase}</p>
+            </a>
+          </article>)}
+        </div>
+      </section>
+
+      <section class="approach-section" id="approach" aria-labelledby="approach-title">
+        <div class="wrap approach-grid">
+          <div class="approach-intro"><p class="eyebrow">02 / ПОДХОД</p><h2 id="approach-title">Сначала смысл.<br />Потом —<br /><span class="paint-word">характер.</span></h2><p>Я соединяю ясную структуру и смелый визуальный язык. Чтобы сайт не просто выглядел интересно — он точно выражал вашу идею и помогал человеку сделать следующий шаг.</p><div class="process" aria-label="Процесс: идея, визуальный язык, работающий сайт"><span>Идея</span><span aria-hidden="true">→</span><span>Визуальный язык</span><span aria-hidden="true">→</span><span>Работающий сайт</span></div></div>
+          <div class="services">{services.map(service => <div class="service"><span class="service-number">{service.number}</span><div><h3>{service.title}</h3><p>{service.text}</p></div><span class="service-mark" aria-hidden="true">+</span></div>)}<div class="signature"><Mark /><p>Чуть меньше привычного.<br />Чуть больше своего.</p></div></div>
+        </div>
+      </section>
+
+      <section class="contact-section wrap" id="contact" aria-labelledby="contact-title">
+        <p class="eyebrow">03 / НАЧНЁМ С ИДЕИ</p>
+        <div class="contact-row"><h2 id="contact-title">Давайте сделаем<br />что-то, что <span>запомнят.</span></h2><div class="contact-action">{contactHref ? <a class="button button-lime contact-button" href={contactHref}>Обсудить проект</a> : <><button class="button button-lime contact-button" type="button" data-contact-open>Обсудить проект</button><p class="contact-pending">Контакт скоро появится</p></>}{brand.contact.email && <a class="contact-email" href={`mailto:${brand.contact.email}`}>{brand.contact.email}</a>}{brand.contact.telegram && <a class="contact-email" href={brand.contact.telegram}>Telegram</a>}</div></div>
+        <div class="footer-word" aria-hidden="true">SPRAYFORM</div>
+      </section>
+    </main>
+    <footer class="site-footer wrap"><a class="footer-brand" href="#top"><Mark /><span>© 2026 SPRAYFORM</span></a><p>{brand.tagline}</p><a href="#top">В начало</a></footer>
+
+    {projects.map(project => <dialog id={`modal-${project.id}`} class="project-dialog" aria-labelledby={`dialog-title-${project.id}`}>
+      <button class="dialog-close" type="button" aria-label="Закрыть описание проекта">×</button>
+      <img class="dialog-cover" src={`/assets/${project.id}-960.webp`} width="960" height="720" loading="lazy" alt={project.alt} />
+      <div class="dialog-content"><p class="eyebrow">АВТОРСКИЙ КОНЦЕПТ / {project.category}</p><h2 id={`dialog-title-${project.id}`}>{project.name}</h2><p class="dialog-phrase">{project.phrase}</p><div class="dialog-columns"><div><h3>Задача</h3><p>{project.task}</p></div><div><h3>Решение</h3><p>{project.solution}</p></div></div><p class="scope">{project.scope}</p><p class="concept-note">Самостоятельное исследование. Не клиентский заказ. Обложка — художественный 3D-этюд, а не скриншот готового продукта.</p></div>
+    </dialog>)}
+    <dialog id="contact-dialog" class="contact-dialog" aria-labelledby="contact-dialog-title"><button class="dialog-close" type="button" aria-label="Закрыть окно">×</button><p class="eyebrow">SPRAYFORM / КОНТАКТ</p><h2 id="contact-dialog-title">Скоро на связи.</h2><p>Портфолио уже открыто. Адрес для новых проектов появится здесь чуть позже.</p><p class="concept-note">Заявка не отправлена: форма пока не подключена.</p><button class="button button-lime" type="button" data-close>Понятно</button></dialog>
+    <script src="../lib/interface.ts"></script>
+  </body>
+</html>
